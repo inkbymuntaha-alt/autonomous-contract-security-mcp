@@ -1,0 +1,33 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/v1/manifest.json",
+  "name": "autonomous-contract-security",
+  "description": "Real-time on-chain token liquidity depth and risk score telemetry gated by Base USDC.",
+  "version": "1.0.0",
+  "homepage": "https://autonomous-contract-security.vercel.app",
+  "endpoint": "https://autonomous-contract-security.vercel.app/mcp/tools/check_contract_risk",
+  "manifest_url": "https://autonomous-contract-security.vercel.app/mcp/manifest",
+  "x402_gated": true,
+  "payment": {
+    "network": "eip155:8453",
+    "asset": "USDC",
+    "contract": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "recipient": "0x960E510E4E1dA4B13CE3b601202d4680AFcf02E0",
+    "price_per_call": "0.003"
+  },
+  "capabilities": {
+    "tools": [
+      {
+        "name": "check_contract_risk",
+        "description": "Analyze an EVM contract or token address for liquidity risk and honeypot flags.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "contract_address": { "type": "string" },
+            "chain_id": { "type": "string", "default": "8453" }
+          },
+          "required": ["contract_address"]
+        }
+      }
+    ]
+  }
+}
